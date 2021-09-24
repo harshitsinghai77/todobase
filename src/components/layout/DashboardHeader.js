@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { FaPizzaSlice } from 'react-icons/fa';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { APP_NAME } from '../../constants';
 import { AddTask } from '../AddTask';
 import { useAuth } from '../../context/authContext';
 
-export const Header = ({ darkMode, setDarkMode }) => {
+export const DashboardHeader = ({ darkMode, setDarkMode }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
   const { logout } = useAuth();
@@ -17,18 +17,20 @@ export const Header = ({ darkMode, setDarkMode }) => {
   async function handleLogout() {
     try {
       await logout();
-      history.push('/login');
+      history.push('/');
     } catch {
       setError('Failed to log out');
     }
   }
 
   return (
-    <header className="header" data-testid="header">
+    <header className="dashboard-header" data-testid="header">
       <nav>
-        <div className="logo">
-          <img src="/images/logo.png" alt={APP_NAME} />
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src="/images/logo.png" alt={APP_NAME} />
+          </div>
+        </Link>
         <div className="settings">
           <ul>
             <li className="settings__add">
@@ -77,7 +79,7 @@ export const Header = ({ darkMode, setDarkMode }) => {
   );
 };
 
-Header.propTypes = {
+DashboardHeader.propTypes = {
   darkMode: PropTypes.bool.isRequired,
   setDarkMode: PropTypes.func.isRequired,
 };

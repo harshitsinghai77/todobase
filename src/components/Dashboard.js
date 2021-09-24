@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Header } from './layout/Header';
+import { DashboardHeader } from './layout/DashboardHeader';
 import { Content } from './layout/Content';
 import { ProjectsProvider, SelectedProjectProvider } from '../context';
 
@@ -14,7 +14,7 @@ const Dashboard = ({ darkModeDefault = false }) => {
           data-testid="application"
           className={darkMode ? 'darkmode' : undefined}
         >
-          <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+          <DashboardHeader darkMode={darkMode} setDarkMode={setDarkMode} />
           <Content />
         </main>
       </ProjectsProvider>
