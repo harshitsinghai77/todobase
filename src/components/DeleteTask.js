@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { FaTrashAlt } from 'react-icons/fa';
 
 import app from '../firebase';
 
@@ -10,7 +10,7 @@ export const DeleteTask = ({ id, taskDesc }) => {
 
   return (
     <div aria-label={`Delete ${taskDesc}`} role="button">
-      <AiOutlineDelete size={15} onClick={deleteTask} />
+      <FaTrashAlt size={15} onClick={deleteTask} color="#cacaca" />
     </div>
   );
 };
