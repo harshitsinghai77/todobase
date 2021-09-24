@@ -10,7 +10,7 @@ import { useSelectedProjectValue, useProjectsValue } from '../context';
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
-  const { tasks } = useTasks(selectedProject);
+  const { tasks, archivedTasks } = useTasks(selectedProject);
   let projectName = '';
 
   if (collatedTasksExist(selectedProject) && selectedProject) {
@@ -35,20 +35,34 @@ export const Tasks = () => {
       <h2 data-testid="project-name">{projectName}</h2>
 
       <ul className="tasks__list">
-        {tasks.map((task) => (
-          <li key={`${task.id}`}>
-            <div className="flex-space-between">
-              <div className="checkbox-and-task-name">
-                <Checkbox id={task.id} taskDesc={task.task} />
-                <span>{task.task}</span>
+        {selectedProject === 'COMPLETED_TASKS' ? (
+          archivedTasks.map((task) => (
+            <li key={`${task.id}`}>
+              <div className="flex-space-between">
+                <div className="checkbox-and-task-name">
+                  <span>{task.task}</span>
+                </div>
+                <DeleteTask id={task.id} taskDesc={task.task} />
               </div>
-              <DeleteTask id={task.id} taskDesc={task.task} />
-            </div>
-          </li>
-        ))}
+            </li>
+          ))
+        ) : (
+          <>
+            {tasks.map((task) => (
+              <li key={`${task.id}`}>
+                <div className="flex-space-between">
+                  <div className="checkbox-and-task-name">
+                    <Checkbox id={task.id} taskDesc={task.task} />
+                    <span>{task.task}</span>
+                  </div>
+                  <DeleteTask id={task.id} taskDesc={task.task} />
+                </div>
+              </li>
+            ))}
+            <AddTask />
+          </>
+        )}
       </ul>
-
-      <AddTask />
     </div>
   );
 };

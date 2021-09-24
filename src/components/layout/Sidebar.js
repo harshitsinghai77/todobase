@@ -5,6 +5,8 @@ import {
   FaRegCalendarAlt,
   FaRegCalendar,
 } from 'react-icons/fa';
+import { GrCompliance } from 'react-icons/gr';
+
 import { Projects } from '../Projects';
 import { useSelectedProjectValue } from '../../context';
 import { AddProject } from '../AddProject';
@@ -93,6 +95,28 @@ export const Sidebar = () => {
               <FaRegCalendarAlt />
             </span>
             <span>Next 7 days</span>
+          </div>
+        </li>
+        <li className={active === 'COMPLETED_TASKS' ? 'active' : undefined}>
+          <div
+            aria-label="Show completed tasks"
+            tabIndex={0}
+            role="button"
+            onClick={() => {
+              setActive('COMPLETED_TASKS');
+              setSelectedProject('COMPLETED_TASKS');
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setActive('COMPLETED_TASKS');
+                setSelectedProject('COMPLETED_TASKS');
+              }
+            }}
+          >
+            <span>
+              <GrCompliance />
+            </span>
+            <span>Completed Tasks</span>
           </div>
         </li>
       </ul>
