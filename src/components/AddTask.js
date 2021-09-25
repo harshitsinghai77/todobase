@@ -17,6 +17,7 @@ export const AddTask = ({
   setShowQuickAddTask,
 }) => {
   const [task, setTask] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
   const [taskDate, setTaskDate] = useState('');
   const [project, setProject] = useState('');
   const [showMain, setShowMain] = useState(shouldShowMain);
@@ -45,6 +46,7 @@ export const AddTask = ({
           archived: false,
           projectId,
           task,
+          taskDescription,
           date: collatedDate || taskDate,
           userId: currentUser.uid,
           createdAt: new firebase.firestore.Timestamp.now(),
@@ -53,6 +55,7 @@ export const AddTask = ({
           setTask('');
           setProject('');
           // setShowMain(false);
+          setTaskDescription('');
           setShowProjectOverlay(false);
         })
     );
@@ -127,18 +130,37 @@ export const AddTask = ({
           />
 
           <form onSubmit={handleAddTask}>
-            <input
-              className="add-task__content"
-              aria-label="Enter your task"
-              data-testid="add-task-content"
-              type="text"
-              value={task}
-              onChange={(e) => setTask(e.target.value)}
-            />
+            <div className="border border-solid	border-gray-700 rounded-lg p-2 focus:border-red-900">
+              <div className="flex items-center	text-base	break-words">
+                <input
+                  className="add-task__content border-none outline-none"
+                  aria-label="Enter your task"
+                  data-testid="add-task-content"
+                  type="text"
+                  placeholder="eg., watch Chelsea vs Manchester city"
+                  value={task}
+                  onChange={(e) => setTask(e.target.value)}
+                />
+              </div>
+
+              <textarea
+                className="border-none mt-1.5 pt-px w-full text-md outline-none h-20"
+                aria-invalid="false"
+                aria-errormessage="a11y_task_description_over_limit"
+                placeholder="Description"
+                data-dashlane-rid="bbe2688572f1cc7c"
+                data-form-type=""
+                spellCheck="false"
+                value={taskDescription}
+                onChange={(e) => setTaskDescription(e.target.value)}
+              ></textarea>
+            </div>
 
             <button
               type="submit"
-              className="add-task__submit"
+              className={`add-task__submit ${
+                task ? 'opacity-100' : 'opacity-50'
+              }`}
               data-testid="add-task"
               tabIndex="0"
               onClick={handleAddTask}
