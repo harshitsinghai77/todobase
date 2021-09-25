@@ -9,7 +9,7 @@ const LandingPageHeader = () => (
           <img
             className="logo"
             src="/images/todobase_logo.png"
-            alt="Site logo"
+            alt="TodoBase"
           />
         </Link>
       </div>
