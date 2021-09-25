@@ -53,7 +53,14 @@ export const Tasks = () => {
                 <div className="flex-space-between">
                   <div className="checkbox-and-task-name">
                     <Checkbox id={task.id} taskDesc={task.task} />
-                    <span>{task.task}</span>
+                    <div className="flex flex-1 flex-col">
+                      <span className="flex-1 text-sm	break-words">
+                        {task.task}
+                      </span>
+                      <span className="flex-1 text-sm	break-words text-gray-500">
+                        {task.taskDescription}
+                      </span>
+                    </div>
                   </div>
                   <DeleteTask id={task.id} taskDesc={task.task} />
                 </div>
