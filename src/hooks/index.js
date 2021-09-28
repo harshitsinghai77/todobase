@@ -49,10 +49,12 @@ export const useTasks = (selectedProject) => {
         selectedProject === 'NEXT_7'
           ? pendingTasks.filter(
               (task) =>
-                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7
+                (moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7) &
+                (task.projectId !== 'TODAY')
             )
           : pendingTasks
       );
+
       setArchivedTasks(
         completedTasks.reverse() // reverse to get the last item on top
       );
