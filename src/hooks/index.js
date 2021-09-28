@@ -5,6 +5,7 @@ import moment from 'moment';
 import app from '../firebase';
 import { collatedTasksExist } from '../helpers';
 import { useAuth } from '../context/authContext';
+import { partitionFilter } from '../helpers';
 
 export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
@@ -39,16 +40,22 @@ export const useTasks = (selectedProject) => {
         ...task.data(),
       }));
 
+      const [completedTasks, pendingTasks] = partitionFilter(
+        newTasks,
+        (e) => e.archived === true
+      );
+
       setTasks(
         selectedProject === 'NEXT_7'
-          ? newTasks.filter(
+          ? pendingTasks.filter(
               (task) =>
-                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&
-                task.archived !== true
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7
             )
-          : newTasks.filter((task) => task.archived !== true)
+          : pendingTasks
       );
-      setArchivedTasks(newTasks.filter((task) => task.archived !== false));
+      setArchivedTasks(
+        completedTasks.reverse() // reverse to get the last item on top
+      );
     });
 
     return () => unsubscribe();
