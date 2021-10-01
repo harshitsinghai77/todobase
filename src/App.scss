@@ -188,10 +188,10 @@ $generic-bg: #db4c3f;
 
     div {
       &.logo {
-        padding-left: 8px;
+        // padding-left: 1px;
         grid-area: 1 / 1;
         img {
-          width: 24px;
+          width: 120px;
         }
       }
 

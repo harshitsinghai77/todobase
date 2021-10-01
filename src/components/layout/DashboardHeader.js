@@ -28,7 +28,7 @@ export const DashboardHeader = ({ darkMode, setDarkMode }) => {
       <nav>
         <Link to="/">
           <div className="logo">
-            <img src="/images/logo.png" alt={APP_NAME} />
+            <img src="/images/todobase_logo.png" alt={APP_NAME} />
           </div>
         </Link>
         <div className="settings">
