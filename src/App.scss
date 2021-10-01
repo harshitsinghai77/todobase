@@ -232,6 +232,10 @@ $generic-bg: #db4c3f;
 
           &.settings__logout {
             margin-left: 15px;
+            svg {
+              width: 20px;
+              height: 20px;
+            }
             button {
               @include transparent-button();
               color: white;
@@ -245,6 +249,10 @@ $generic-bg: #db4c3f;
           }
 
           &.settings__darkmode {
+            svg {
+              width: 20px;
+              height: 20px;
+            }
             button {
               @include transparent-button();
               color: white;

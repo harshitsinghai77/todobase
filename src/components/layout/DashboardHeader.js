@@ -28,12 +28,19 @@ export const DashboardHeader = ({ darkMode, setDarkMode }) => {
       <nav>
         <Link to="/">
           <div className="logo">
-            <img src="/images/todobase_logo.png" alt={APP_NAME} />
+            <img
+              src={
+                darkMode
+                  ? '/images/todobase_logo_dark.jpg'
+                  : '/images/todobase_logo.png'
+              }
+              alt={APP_NAME}
+            />
           </div>
         </Link>
         <div className="settings">
           <ul>
-            <li className="settings__add">
+            {/* <li className="settings__add">
               <button
                 data-testid="quick-add-task-action"
                 aria-label="Quick add task"
@@ -45,25 +52,15 @@ export const DashboardHeader = ({ darkMode, setDarkMode }) => {
               >
                 +
               </button>
+            </li> */}
+            <li
+              className="settings__darkmode"
+              onClick={() => setDarkMode(!darkMode)}
+            >
+              <FaPizzaSlice />
             </li>
-            <li className="settings__darkmode">
-              <button
-                data-testid="dark-mode-action"
-                aria-label="Darkmode on/off"
-                type="button"
-                onClick={() => setDarkMode(!darkMode)}
-              >
-                <FaPizzaSlice />
-              </button>
-            </li>
-            <li className="settings__logout">
-              <button
-                aria-label="Logout"
-                type="button"
-                onClick={() => handleLogout()}
-              >
-                <RiLogoutCircleRLine />
-              </button>
+            <li className="settings__logout" onClick={() => handleLogout()}>
+              <RiLogoutCircleRLine />
             </li>
           </ul>
         </div>
