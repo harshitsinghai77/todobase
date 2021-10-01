@@ -66,6 +66,13 @@ export const AddTask = ({
     showQuickAddTask ? addTask() && setShowQuickAddTask(false) : addTask();
   };
 
+  const cancelAddTask = () => {
+    setShowMain(false);
+    setShowProjectOverlay(false);
+    setTask('');
+    setTaskDescription('');
+  };
+
   return (
     <div
       className={showQuickAddTask ? 'add-task add-task__overlay' : 'add-task'}
@@ -171,14 +178,10 @@ export const AddTask = ({
               <span
                 className="add-task__cancel"
                 data-testid="add-task-main-cancel"
-                onClick={() => {
-                  setShowMain(false);
-                  setShowProjectOverlay(false);
-                }}
+                onClick={cancelAddTask}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
-                    setShowMain(false);
-                    setShowProjectOverlay(false);
+                    cancelAddTask();
                   }
                 }}
                 aria-label="Cancel adding a task"
