@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import { APP_NAME } from '../../constants';
 import { AddTask } from '../AddTask';
 import { useAuth } from '../../context/authContext';
+import LightImage from './todobase_logo.png';
+import DarkImage from './todobase_logo_dark.jpg';
 
 export const DashboardHeader = ({ darkMode, setDarkMode }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
@@ -28,14 +30,7 @@ export const DashboardHeader = ({ darkMode, setDarkMode }) => {
       <nav>
         <Link to="/">
           <div className="logo">
-            <img
-              src={
-                darkMode
-                  ? '/images/todobase_logo_dark.jpg'
-                  : '/images/todobase_logo.png'
-              }
-              alt={APP_NAME}
-            />
+            <img src={darkMode ? DarkImage : LightImage} alt={APP_NAME} />
           </div>
         </Link>
         <div className="settings">
