@@ -10,30 +10,24 @@ export default function AboutUs() {
           <div>
             <h2>About {APP_NAME}</h2>
 
-            <p>{APP_NAME} is your digital place for focus.</p>
+            <p>{APP_NAME} helps you keep track of your tasks and to-do list.</p>
             <p>
-              With {APP_NAME} you can mix and match different sounds in order to
-              create your perfect sound environment. In places where it is
-              either too loud or too quiet, {APP_NAME} helps to mask annoying
-              noises and to create a pleasant sound environment in order to stay
-              focused and relax.
-            </p>
-            <p>
-              Noisli timer helps you keep track of your time. Get clear and
-              concise picture of your productivity with our analytics. Our
-              analytics help you get insight on how you've spent the last 7
-              days.
+              With{' '}
+              <a href="https://nemo-landing-page.netlify.app/" target="_blank">
+                Nemo
+              </a>{' '}
+              you can mix and match different sounds in order to create your
+              perfect sound environment. todoBase helps you stay on top of your
+              work routine, tasks and todolist.
             </p>
 
             <h3>Self-started with passion</h3>
             <p>
               {APP_NAME} started as a side project in 2021. At that time the
               founder, Harshit, was working remotely as software engineer.
-              Struggling to find motivation and to not feel isolated at home,
-              but also finding it difficult to maintain focus when working from
-              home, {APP_NAME} was the solution to the problem. Today {APP_NAME}{' '}
-              is helping people around the world to stay sane at work, at home
-              and on the go.
+              Struggling to maintain daily schedule, Harshit created {APP_NAME}.
+              Why not use existing todo app you ask? Well, Harshit doesn't have
+              the answer for you. He created todoBase because he could.
             </p>
 
             <h3>Simplicity and care for people.</h3>
